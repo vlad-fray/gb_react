@@ -1,0 +1,28 @@
+:root {
+  --primary: #444;
+  --secondary: #689cd2;
+  --secondary-dark: #04376c;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+a,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}

@@ -1,0 +1,10 @@
+.header {
+  color: white;
+  background-color: var(--secondary-dark);
+  padding: 10px;
+}
+
+.header h1 {
+  max-width: 1200px;
+  margin: 0 auto;
+}
