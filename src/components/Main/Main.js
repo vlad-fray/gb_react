@@ -1,6 +1,6 @@
 import classes from './Main.module.css';
 import Message from '../Message/Message';
-
+/* */
 const Main = (props) => {
   return (
     <div className={classes.main}>
