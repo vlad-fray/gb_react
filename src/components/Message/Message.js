@@ -1,7 +1,12 @@
 import classes from './Message.module.css';
 
-const FirstComponent = (props) => {
-  return <div className={classes.message}>{props.message}</div>;
+const Message = ({ author, message }) => {
+  return (
+    <div className={classes.message}>
+      <span className={classes.author}>{author}</span>
+      {message}
+    </div>
+  );
 };
 
-export default FirstComponent;
+export default Message;
