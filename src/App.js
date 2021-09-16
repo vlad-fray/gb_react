@@ -1,8 +1,25 @@
+import { createTheme, ThemeProvider } from '@material-ui/core';
 import { useCallback, useEffect, useState } from 'react';
 import './base.css';
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import SideMenu from './components/SideMenu/SideMenu';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#333996',
+      light: '#3c44b126',
+    },
+    secondary: {
+      main: '#f83245',
+      light: '#f8324526',
+    },
+    background: {
+      default: '#f4f5fd',
+    },
+  },
+});
 
 function App() {
   const [messageList, setMessageList] = useState([]);
@@ -34,11 +51,13 @@ function App() {
   }, [messageList, sendMessage]);
 
   return (
-    <div className='layout'>
-      <Header />
-      <SideMenu chats={chatList} />
-      <Main messageList={messageList} sendMessage={sendMessage} />
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className='layout'>
+        <Header />
+        <SideMenu chats={chatList} />
+        <Main messageList={messageList} sendMessage={sendMessage} />
+      </div>
+    </ThemeProvider>
   );
 }
 
