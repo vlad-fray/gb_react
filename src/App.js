@@ -28,15 +28,12 @@ function App() {
     { title: 'robot-2', id: 2 },
   ]);
 
-  const sendMessage = useCallback(
-    (text, author) => {
-      setMessageList((prev) => [
-        ...prev,
-        { text, author, id: Math.floor(Math.random() * 10000) },
-      ]);
-    },
-    [setMessageList]
-  );
+  const sendMessage = useCallback((text, author) => {
+    setMessageList((prev) => [
+      ...prev,
+      { text, author, id: Math.floor(Math.random() * 10000) },
+    ]);
+  }, []);
 
   useEffect(() => {
     const id = messageList.length - 1;
