@@ -6,7 +6,6 @@
   background-color: var(--secondary);
   padding: 10px;
   box-shadow: 0 0 2px 0 var(--secondary);
-  border-radius: 0 0 10px 10px;
 }
 
 .header h1 {
