@@ -1,10 +1,20 @@
 .form {
-  max-width: 500px;
   width: 100%;
   display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.form input {
+.input {
+  width: 100%;
+  margin-right: 10px;
+}
+
+.form button {
+  margin-left: auto;
+}
+
+/* .form input {
   color: var(--secondary-dark);
   background-color: white;
   border-radius: 5px;
@@ -30,4 +40,4 @@
   color: var(--secondary-dark);
   background-color: white;
   box-shadow: 0 0 0 1px var(--secondary-dark);
-}
+} */

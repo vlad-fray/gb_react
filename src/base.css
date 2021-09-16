@@ -1,5 +1,5 @@
 :root {
-  --primary: #444;
+  --primary: rgba(0, 0, 0, 0.54);
   --secondary: #689cd2;
   --secondary-dark: #04376c;
 }
@@ -8,6 +8,10 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+body {
+  color: var(--secondary-dark);
 }
 
 h1,
@@ -26,3 +30,27 @@ a:active {
 button {
   cursor: pointer;
 }
+
+.layout {
+  display: grid;
+  grid-template-areas:
+    'header header'
+    'sidebar content';
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  padding: 0 0 10px 0;
+}
+
+header {
+  grid-area: header;
+}
+aside {
+  grid-area: sidebar;
+}
+main {
+  grid-area: content;
+}
+
+/* .hidden {
+  display: none;
+} */

@@ -1,12 +1,9 @@
 import classes from './SendMessageForm.module.css';
+import { TextField, Button } from '@material-ui/core';
 import { useState } from 'react';
 
 const SendMessageForm = ({ sendMessage }) => {
   const [inputMessage, setInputMessage] = useState('');
-
-  const handleChange = (e) => {
-    setInputMessage(e.target.value);
-  };
 
   const handleSendingMessage = (e) => {
     e.preventDefault();
@@ -16,15 +13,26 @@ const SendMessageForm = ({ sendMessage }) => {
 
   return (
     <form className={classes.form} onSubmit={handleSendingMessage}>
-      <input
+      <TextField
+        variant='outlined'
+        label='Write your message'
         value={inputMessage}
-        onChange={handleChange}
-        id='newMessage'
-        placeholder='Write your message'
-      ></input>
-      <button type='submit'>Send message</button>
+        onChange={(e) => setInputMessage(e.target.value)}
+        fullWidth
+        inputRef={(input) => input && input.focus()}
+      />
+      <Button type='submit' variant='contained' color='primary'>
+        Send message
+      </Button>
     </form>
   );
 };
 
 export default SendMessageForm;
+
+/* <input
+        value={inputMessage}
+        onChange={(e) => setInputMessage(e.target.value)}
+        placeholder='Write your message'
+      ></input>
+      <button type='submit'>Send message</button> */
