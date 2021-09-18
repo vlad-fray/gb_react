@@ -1,13 +1,18 @@
 import classes from './Main.module.css';
 import Message from '../Message/Message';
-/* */
-const Main = (props) => {
+import SendMessageForm from '../Message/SendMessageForm';
+
+const Main = ({ messageList, sendMessage }) => {
   return (
     <div className={classes.main}>
       <h2>Messages</h2>
-      {props.messages.map((mes) => {
-        return <Message message={mes} />;
+      {messageList.map((mes, id) => {
+        return (
+          <Message key={id} author={mes.author} message={mes.text} />
+        );
       })}
+
+      <SendMessageForm sendMessage={sendMessage} />
     </div>
   );
 };

@@ -1,0 +1,33 @@
+.form {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+}
+
+.form input {
+  color: var(--secondary-dark);
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid var(--secondary);
+  padding: 15px;
+  width: 100%;
+}
+
+.form button {
+  width: 100px;
+  background-color: var(--secondary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.form button:hover {
+  background-color: var(--secondary-dark);
+}
+
+.form button:active {
+  color: var(--secondary-dark);
+  background-color: white;
+  box-shadow: 0 0 0 1px var(--secondary-dark);
+}
