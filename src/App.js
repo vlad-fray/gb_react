@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Route, Switch } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 import './base.css';
 import Header from './components/Header/Header';
 import AddDialog from './components/Message/AddDialog';
@@ -75,23 +75,28 @@ function App() {
   return (
     <div className='layout'>
       <Header />
-      <Route exact path='/'>
-        <h1>Home page</h1>
-      </Route>
-      <Route path='/profile' exact>
-        <Profile />
-      </Route>
-      <Route path='/messages'>
-        <SideMenu dialogsList={dialogsList} />
-        <Switch>
-          <Route exact path='/messages/add-dialog'>
-            <AddDialog addDialog={addDialog} />
-          </Route>
-          <Route path='/messages/:id'>
-            <Messages dialogsList={dialogsList} sendMessage={sendMessage} />
-          </Route>
-        </Switch>
-      </Route>
+      <Switch>
+        <Route exact path='/'>
+          <h1>Home page</h1>
+        </Route>
+        <Route path='/profile' exact>
+          <Profile />
+        </Route>
+        <Route path='/messages'>
+          <SideMenu dialogsList={dialogsList} />
+          <Switch>
+            <Route exact path='/messages/add-dialog'>
+              <AddDialog addDialog={addDialog} />
+            </Route>
+            <Route path='/messages/:id'>
+              <Messages dialogsList={dialogsList} sendMessage={sendMessage} />
+            </Route>
+          </Switch>
+        </Route>
+        <Route path='*'>
+          <Redirect to='/' />
+        </Route>
+      </Switch>
     </div>
   );
 }
