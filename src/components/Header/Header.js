@@ -14,6 +14,9 @@ const Header = () => {
         <NavLink exact activeClassName={classes.active} to='/'>
           Home
         </NavLink>
+        <NavLink activeClassName={classes.active} to='/profile'>
+          Profile
+        </NavLink>
         <NavLink activeClassName={classes.active} to='/messages'>
           Dialogs
         </NavLink>

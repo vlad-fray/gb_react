@@ -15,7 +15,6 @@ const SideMenu = ({ dialogsList }) => {
       ))}
       <NavLink
         className={classes.add}
-        onClick={() => console.log('addHey')}
         to='/messages/add-dialog'
         activeClassName={classes['active-chat']}
       >

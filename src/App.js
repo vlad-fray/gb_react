@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { Route, Switch } from 'react-router';
 import './base.css';
 import Header from './components/Header/Header';
+import AddDialog from './components/Message/AddDialog';
 import Messages from './components/Message/Messages';
+import Profile from './components/Profile/Profile';
 import SideMenu from './components/SideMenu/SideMenu';
 
 function App() {
@@ -58,20 +60,38 @@ function App() {
     }
   };
 
+  const addDialog = (chatName) => {
+    setDialogsList((prev) => [
+      ...prev,
+      {
+        dialogId: Math.floor(Math.random() * 1000),
+        title: chatName,
+        messageList: [],
+        isActive: false,
+      },
+    ]);
+  };
+
   return (
     <div className='layout'>
       <Header />
-      <Switch>
-        <Route path='/' exact>
-          <h1>Home page</h1>
-        </Route>
-        <Route path='/messages'>
-          <SideMenu dialogsList={dialogsList} />
+      <Route exact path='/'>
+        <h1>Home page</h1>
+      </Route>
+      <Route path='/profile' exact>
+        <Profile />
+      </Route>
+      <Route path='/messages'>
+        <SideMenu dialogsList={dialogsList} />
+        <Switch>
+          <Route exact path='/messages/add-dialog'>
+            <AddDialog addDialog={addDialog} />
+          </Route>
           <Route path='/messages/:id'>
             <Messages dialogsList={dialogsList} sendMessage={sendMessage} />
           </Route>
-        </Route>
-      </Switch>
+        </Switch>
+      </Route>
     </div>
   );
 }

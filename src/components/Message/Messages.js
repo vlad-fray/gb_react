@@ -16,15 +16,22 @@ const Messages = ({ sendMessage, dialogsList }) => {
   };
 
   return (
-    <main className={classes.main}>
-      <h2>Messages</h2>
+    <section className={classes.messages}>
+      {currentDialog && (
+        <>
+          <h2>Messages</h2>
 
-      {currentDialog.messageList.map((mes) => {
-        return <Message key={mes.id} author={mes.author} message={mes.text} />;
-      })}
+          {currentDialog.messageList.map((mes) => {
+            return (
+              <Message key={mes.id} author={mes.author} message={mes.text} />
+            );
+          })}
 
-      <SendMessageForm sendMessage={sendMessageHandler} />
-    </main>
+          <SendMessageForm sendMessage={sendMessageHandler} />
+        </>
+      )}
+      {!currentDialog && <h2>This dialog doesn't exist</h2>}
+    </section>
   );
 };
 

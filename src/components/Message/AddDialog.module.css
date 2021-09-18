@@ -1,0 +1,28 @@
+.add-dialog {
+  max-width: 1200px;
+  margin: 10px;
+  padding: 20px;
+  color: var(--primary);
+  box-shadow: 0 0 5px 0 var(--secondary);
+  border-radius: 5px;
+}
+
+.add-dialog h2 {
+  margin-bottom: 10px;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input {
+  width: 100%;
+  margin-right: 10px;
+}
+
+.form button {
+  margin-left: auto;
+}
