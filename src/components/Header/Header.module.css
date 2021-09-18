@@ -12,6 +12,22 @@
   margin-right: auto;
 }
 
+.header nav {
+  display: flex;
+  justify-content: space-around;
+  max-width: 150px;
+  width: 100%;
+  margin: 0 10px;
+}
+
+.header a {
+  color: white;
+}
+
+.active {
+  text-decoration: underline;
+}
+
 @media (max-width: 900px) {
   .header h1 {
     font-size: 24px;
