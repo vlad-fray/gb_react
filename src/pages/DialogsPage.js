@@ -8,7 +8,7 @@ import { ADD_DIALOG, SEND_MESSAGE } from '../store/dialogsReducer';
 
 const DialogsPage = () => {
   const dispatch = useDispatch();
-  const dialogsList = useSelector((state) => state.dialogsList);
+  const dialogsList = useSelector((state) => state.dialogs);
 
   const sendMessage = ({ dialogId, text, author }) => {
     dispatch({ type: SEND_MESSAGE, payload: { dialogId, text, author } });

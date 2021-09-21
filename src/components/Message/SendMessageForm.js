@@ -7,7 +7,7 @@ const SendMessageForm = ({ sendMessage }) => {
 
   const handleSendingMessage = (e) => {
     e.preventDefault();
-    if (inputMessage.trim()) sendMessage(inputMessage, 'user');
+    if (inputMessage.trim()) sendMessage(inputMessage, 'You');
     setInputMessage('');
   };
 
