@@ -31,26 +31,7 @@ button {
   cursor: pointer;
 }
 
-.layout {
-  display: grid;
-  grid-template-areas:
-    'header header'
-    'sidebar content';
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto 1fr;
-  padding: 0 0 10px 0;
+.container {
+  margin: 0 auto;
+  max-width: 1600px;
 }
-
-header {
-  grid-area: header;
-}
-aside {
-  grid-area: sidebar;
-}
-main {
-  grid-area: content;
-}
-
-/* .hidden {
-  display: none;
-} */

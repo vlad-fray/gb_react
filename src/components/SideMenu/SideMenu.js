@@ -8,14 +8,14 @@ const SideMenu = ({ dialogsList }) => {
         <NavLink
           key={dialog.dialogId}
           activeClassName={classes['active-chat']}
-          to={`/messages/${dialog.dialogId}`}
+          to={`/dialogs/${dialog.dialogId}`}
         >
           {dialog.title}
         </NavLink>
       ))}
       <NavLink
         className={classes.add}
-        to='/messages/add-dialog'
+        to='/dialogs/add-dialog'
         activeClassName={classes['active-chat']}
       >
         <AddBoxIcon />

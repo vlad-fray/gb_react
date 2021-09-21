@@ -9,34 +9,36 @@ import { NavLink } from 'react-router-dom';
 const Header = () => {
   return (
     <header className={classes.header}>
-      <h1>Social network</h1>
-      <nav>
-        <NavLink exact activeClassName={classes.active} to='/'>
-          Home
-        </NavLink>
-        <NavLink activeClassName={classes.active} to='/profile'>
-          Profile
-        </NavLink>
-        <NavLink activeClassName={classes.active} to='/messages'>
-          Dialogs
-        </NavLink>
-      </nav>
-      <div>
-        <IconButton>
-          <Badge badgeContent={0} color='secondary'>
-            <NotificationsNoneIcon />
-          </Badge>
-        </IconButton>
-        <IconButton>
-          <Badge badgeContent={0} color='secondary'>
-            <ChatBubbleOutlineIcon />
-          </Badge>
-        </IconButton>
-        <IconButton>
-          <Badge badgeContent={0} color='secondary'>
-            <ExitToAppIcon />
-          </Badge>
-        </IconButton>
+      <div className={`container ${classes['header-container']}`}>
+        <h1>Social network</h1>
+        <nav>
+          <NavLink exact activeClassName={classes.active} to='/'>
+            Home
+          </NavLink>
+          <NavLink activeClassName={classes.active} to='/profile'>
+            Profile
+          </NavLink>
+          <NavLink activeClassName={classes.active} to='/dialogs'>
+            Dialogs
+          </NavLink>
+        </nav>
+        <div>
+          <IconButton>
+            <Badge badgeContent={0} color='secondary'>
+              <NotificationsNoneIcon />
+            </Badge>
+          </IconButton>
+          <IconButton>
+            <Badge badgeContent={0} color='secondary'>
+              <ChatBubbleOutlineIcon />
+            </Badge>
+          </IconButton>
+          <IconButton>
+            <Badge badgeContent={0} color='secondary'>
+              <ExitToAppIcon />
+            </Badge>
+          </IconButton>
+        </div>
       </div>
     </header>
   );
