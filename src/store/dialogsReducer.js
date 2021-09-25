@@ -15,6 +15,7 @@ const initialState = [
 
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const ADD_DIALOG = 'ADD_DIALOG';
+export const REMOVE_DIALOG = 'REMOVE_DIALOG';
 
 const dialogsReducer = (state = initialState, action) => {
   const dialogsList = state;
@@ -45,6 +46,11 @@ const dialogsReducer = (state = initialState, action) => {
         isActive: false,
       },
     ];
+  }
+
+  if (action.type === REMOVE_DIALOG) {
+    const { id } = action.payload;
+    return dialogsList.filter((dialog) => dialog.dialogId !== id);
   }
 
   return state;

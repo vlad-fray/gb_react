@@ -7,8 +7,32 @@
   width: 100%;
 }
 
-.messages h2 {
+.heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.heading h2 {
   margin-bottom: 10px;
+}
+
+.heading button {
+  padding: 10px;
+  color: var(--secondary-dark);
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.heading button:hover {
+  color: white;
+  background-color: var(--secondary-dark);
+}
+
+.heading button:active {
+  color: white;
+  background-color: lightgray;
 }
 
 @media (max-width: 900px) {

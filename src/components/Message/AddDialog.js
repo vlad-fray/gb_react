@@ -1,9 +1,13 @@
 import classes from './AddDialog.module.css';
-import { useState } from 'react';
-import { TextField, Button } from '@material-ui/core';
+import { useEffect, useRef, useState } from 'react';
 
 const AddDialog = ({ addDialog }) => {
   const [inputName, setInputName] = useState('');
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const handleAddingDialog = (e) => {
     e.preventDefault();
@@ -16,17 +20,13 @@ const AddDialog = ({ addDialog }) => {
     <section className={classes['add-dialog']}>
       <h2>Add dialog</h2>
       <form className={classes.form} onSubmit={handleAddingDialog}>
-        <TextField
-          variant='outlined'
-          label='Write a name of the chat'
+        <input
+          placeholder='Write a name of the chat'
           value={inputName}
           onChange={(e) => setInputName(e.target.value)}
-          fullWidth
-          inputRef={(input) => input && input.focus()}
+          ref={inputRef}
         />
-        <Button type='submit' variant='contained' color='primary'>
-          Add Dialog
-        </Button>
+        <button type='submit'>Add Dialog</button>
       </form>
     </section>
   );
