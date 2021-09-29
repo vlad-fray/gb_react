@@ -4,16 +4,20 @@ import SendMessageForm from '../Message/SendMessageForm';
 
 const Main = ({ messageList, sendMessage }) => {
   return (
-    <div className={classes.main}>
+    <main className={classes.main}>
       <h2>Messages</h2>
-      {messageList.map((mes, id) => {
+      {messageList.map((mes) => {
         return (
-          <Message key={id} author={mes.author} message={mes.text} />
+          <Message
+            key={mes.id}
+            author={mes.author}
+            message={mes.text}
+          />
         );
       })}
 
       <SendMessageForm sendMessage={sendMessage} />
-    </div>
+    </main>
   );
 };
 

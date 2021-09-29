@@ -1,10 +1,22 @@
 .header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   color: white;
-  background-color: var(--secondary-dark);
+  background-color: var(--secondary);
   padding: 10px;
+  box-shadow: 0 0 2px 0 var(--secondary);
 }
 
 .header h1 {
-  max-width: 1200px;
-  margin: 0 auto;
+  margin-right: auto;
+}
+
+@media (max-width: 900px) {
+  .header h1 {
+    font-size: 24px;
+  }
+  .header input {
+    max-width: 150px;
+  }
 }
