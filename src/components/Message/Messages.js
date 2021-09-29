@@ -3,7 +3,12 @@ import Message from './Message';
 import SendMessageForm from './SendMessageForm';
 import { useParams } from 'react-router';
 
-const Messages = ({ sendMessage, removeDialog, dialogsList }) => {
+const Messages = ({
+  sendMessage,
+  removeDialog,
+  dialogsList,
+  deleteMessage,
+}) => {
   const params = useParams();
   const paramId = +params.id;
 
@@ -13,6 +18,10 @@ const Messages = ({ sendMessage, removeDialog, dialogsList }) => {
 
   const sendMessageHandler = (text, author) => {
     sendMessage({ dialogId: paramId, text, author });
+  };
+
+  const deleteMessageHandler = (id) => {
+    deleteMessage({ dialogId: paramId, messageId: id });
   };
 
   return (
@@ -26,7 +35,13 @@ const Messages = ({ sendMessage, removeDialog, dialogsList }) => {
 
           {currentDialog.messageList.map((mes) => {
             return (
-              <Message key={mes.id} author={mes.author} message={mes.text} />
+              <Message
+                key={mes.id}
+                id={mes.id}
+                author={mes.author}
+                message={mes.text}
+                deleteMessage={deleteMessageHandler}
+              />
             );
           })}
 

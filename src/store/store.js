@@ -1,15 +1,28 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import persistReducer from 'redux-persist/es/persistReducer';
+import persistStore from 'redux-persist/es/persistStore';
+import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 import dialogsReducer from './dialogsReducer';
 import profileReducer from './profileReducer';
 
-const reducers = combineReducers({
+const persistConfig = {
+  key: 'root',
+  storage,
+  // whitelist: ['']
+};
+
+const rootReducer = combineReducers({
   dialogs: dialogsReducer,
   profile: profileReducer,
 });
 
+const persistedReducers = persistReducer(persistConfig, rootReducer);
+
 export const store = createStore(
-  reducers,
+  persistedReducers,
   composeWithDevTools(applyMiddleware(thunk))
 );
+
+export const persistor = persistStore(store);

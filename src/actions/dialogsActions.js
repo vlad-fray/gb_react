@@ -2,6 +2,7 @@ import {
   ADD_DIALOG,
   SEND_MESSAGE,
   REMOVE_DIALOG,
+  DELETE_MESSAGE,
 } from '../store/dialogsReducer';
 
 const sendMessageAC = ({ dialogId, text, author }) => {
@@ -22,6 +23,13 @@ const removeDialogAC = (id) => {
   return {
     type: REMOVE_DIALOG,
     payload: { id },
+  };
+};
+
+const deleteMessageAC = ({ dialogId, messageId }) => {
+  return {
+    type: DELETE_MESSAGE,
+    payload: { dialogId, messageId },
   };
 };
 
@@ -49,4 +57,8 @@ export const addDialogThunk = (chatName) => (dispatch) => {
 
 export const removeDialogThunk = (id) => (dispatch) => {
   dispatch(removeDialogAC(id));
+};
+
+export const deleteMessageThunk = (ids) => (dispatch) => {
+  dispatch(deleteMessageAC(ids));
 };

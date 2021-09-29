@@ -8,6 +8,7 @@ import {
   sendMessageThunk,
   removeDialogThunk,
   addDialogThunk,
+  deleteMessageThunk,
 } from './../actions/dialogsActions';
 
 const DialogsPage = () => {
@@ -26,6 +27,10 @@ const DialogsPage = () => {
     dispatch(removeDialogThunk(id));
   };
 
+  const deleteMessage = (ids) => {
+    dispatch(deleteMessageThunk(ids));
+  };
+
   return (
     <div className={classes.dialogs}>
       <SideMenu dialogsList={dialogsList} />
@@ -38,6 +43,7 @@ const DialogsPage = () => {
             dialogsList={dialogsList}
             sendMessage={sendMessage}
             removeDialog={removeDialog}
+            deleteMessage={deleteMessage}
           />
         </Route>
       </Switch>

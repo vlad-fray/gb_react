@@ -16,6 +16,7 @@ const initialState = [
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const ADD_DIALOG = 'ADD_DIALOG';
 export const REMOVE_DIALOG = 'REMOVE_DIALOG';
+export const DELETE_MESSAGE = 'DELETE_MESSAGE';
 
 const dialogsReducer = (state = initialState, action) => {
   const dialogsList = state;
@@ -51,6 +52,21 @@ const dialogsReducer = (state = initialState, action) => {
   if (action.type === REMOVE_DIALOG) {
     const { id } = action.payload;
     return dialogsList.filter((dialog) => dialog.dialogId !== id);
+  }
+
+  if (action.type === DELETE_MESSAGE) {
+    const { dialogId, messageId } = action.payload;
+
+    const newDialogsList = dialogsList.map((dia) => {
+      if (dia.dialogId !== dialogId) return dia;
+
+      return {
+        ...dia,
+        messageList: dia.messageList.filter((mes) => mes.id !== messageId),
+      };
+    });
+
+    return newDialogsList;
   }
 
   return state;
