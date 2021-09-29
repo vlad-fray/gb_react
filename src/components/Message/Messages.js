@@ -2,13 +2,14 @@ import classes from './Messages.module.css';
 import Message from './Message';
 import SendMessageForm from './SendMessageForm';
 import { useParams } from 'react-router';
+import { useDispatch } from 'react-redux';
+import {
+  sendMessageThunk,
+  deleteMessageThunk,
+} from '../../actions/dialogsActions';
 
-const Messages = ({
-  sendMessage,
-  removeDialog,
-  dialogsList,
-  deleteMessage,
-}) => {
+const Messages = ({ removeDialog, dialogsList }) => {
+  const dispatch = useDispatch();
   const params = useParams();
   const paramId = +params.id;
 
@@ -17,11 +18,11 @@ const Messages = ({
   );
 
   const sendMessageHandler = (text, author) => {
-    sendMessage({ dialogId: paramId, text, author });
+    dispatch(sendMessageThunk({ dialogId: paramId, text, author }));
   };
 
   const deleteMessageHandler = (id) => {
-    deleteMessage({ dialogId: paramId, messageId: id });
+    dispatch(deleteMessageThunk({ dialogId: paramId, messageId: id }));
   };
 
   return (
