@@ -5,25 +5,25 @@ import SideMenu from '../components/SideMenu/SideMenu';
 import Messages from '../components/Message/Messages';
 import AddDialog from '../components/Message/AddDialog';
 import {
-  ADD_DIALOG,
-  SEND_MESSAGE,
-  REMOVE_DIALOG,
-} from '../store/dialogsReducer';
+  sendMessageThunk,
+  removeDialogThunk,
+  addDialogThunk,
+} from './../actions/dialogsActions';
 
 const DialogsPage = () => {
   const dispatch = useDispatch();
   const dialogsList = useSelector((state) => state.dialogs);
 
   const sendMessage = ({ dialogId, text, author }) => {
-    dispatch({ type: SEND_MESSAGE, payload: { dialogId, text, author } });
+    dispatch(sendMessageThunk({ dialogId, text, author }));
   };
 
   const addDialog = (chatName) => {
-    dispatch({ type: ADD_DIALOG, payload: { chatName } });
+    dispatch(addDialogThunk(chatName));
   };
 
   const removeDialog = (id) => {
-    dispatch({ type: REMOVE_DIALOG, payload: { id } });
+    dispatch(removeDialogThunk(id));
   };
 
   return (
