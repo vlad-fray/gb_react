@@ -9,8 +9,10 @@ const News = () => {
   const news = useSelector((state) => state.home.news);
 
   useEffect(() => {
-    dispatch(reloadNewsThunk());
-  }, [dispatch]);
+    if (!('person' in news)) {
+      dispatch(reloadNewsThunk());
+    }
+  }, [dispatch, news]);
 
   return (
     <div className={classes.news}>
