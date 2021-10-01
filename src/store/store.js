@@ -11,7 +11,7 @@ import homeReducer from './homeReducer';
 const persistConfig = {
   key: 'root',
   storage,
-  // whitelist: ['']
+  whitelist: ['home'],
 };
 
 const rootReducer = combineReducers({

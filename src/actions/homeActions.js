@@ -1,14 +1,14 @@
-import { loadNewsAPI } from '../api/newsAPI';
-import { LOAD_NEWS } from './../store/homeReducer';
+import { reloadNewsAPI } from '../api/newsAPI';
+import { RELOAD_NEWS } from './../store/homeReducer';
 
-const loadNewsAC = (news) => {
+const reloadNewsAC = (news) => {
   return {
-    type: LOAD_NEWS,
+    type: RELOAD_NEWS,
     payload: { news },
   };
 };
 
-export const loadNewsThunk = () => async (dispatch) => {
-  const news = await loadNewsAPI();
-  dispatch(loadNewsAC(news));
+export const reloadNewsThunk = () => async (dispatch) => {
+  const news = await reloadNewsAPI();
+  dispatch(reloadNewsAC(news));
 };

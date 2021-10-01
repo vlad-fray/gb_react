@@ -1,4 +1,4 @@
-export const loadNewsAPI = async () => {
+export const reloadNewsAPI = async () => {
   try {
     const vehicles = await fetch('https://swapi.dev/api/vehicles').then((res) =>
       res.json()

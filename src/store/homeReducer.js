@@ -2,10 +2,10 @@ const initialState = {
   news: [],
 };
 
-export const LOAD_NEWS = 'LOAD_NEWS';
+export const RELOAD_NEWS = 'LOAD_NEWS';
 
 const homeReducer = (state = initialState, action) => {
-  if (action.type === LOAD_NEWS) {
+  if (action.type === RELOAD_NEWS) {
     const { news } = action.payload;
     return { news };
   }
