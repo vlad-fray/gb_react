@@ -1,7 +1,7 @@
 import classes from './News.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { reloadNewsThunk } from './../../actions/homeActions';
+import { loadNewsCountThunk } from './../../actions/homeActions';
 import NewsList from './NewsList';
 
 const News = () => {
@@ -9,10 +9,8 @@ const News = () => {
   const news = useSelector((state) => state.home.news);
 
   useEffect(() => {
-    if (!('person' in news)) {
-      dispatch(reloadNewsThunk());
-    }
-  }, [dispatch, news]);
+    dispatch(loadNewsCountThunk());
+  }, [dispatch]);
 
   return (
     <div className={classes.news}>

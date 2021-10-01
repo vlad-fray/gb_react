@@ -1,12 +1,14 @@
 import classes from './HomePage.module.css';
 import News from './../components/News/News';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { reloadNewsThunk } from './../actions/homeActions';
 
 const HomePage = () => {
   const dispatch = useDispatch();
+  const counts = useSelector((state) => state.home.counts);
+
   const reloadNewsHandler = () => {
-    dispatch(reloadNewsThunk());
+    dispatch(reloadNewsThunk(counts));
   };
 
   return (
