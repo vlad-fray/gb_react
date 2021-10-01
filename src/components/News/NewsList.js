@@ -58,6 +58,10 @@ const NewsList = ({ news }) => {
           </p>
         </div>
       )}
+
+      {person.detail && vehicle.detail && starship.detail && (
+        <div className={classes['news-item']}>Request failed! Please, try again!</div>
+      )}
     </>
   );
 };
