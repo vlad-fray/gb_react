@@ -6,6 +6,7 @@ import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 import dialogsReducer from './dialogsReducer';
 import profileReducer from './profileReducer';
+import homeReducer from './homeReducer';
 
 const persistConfig = {
   key: 'root',
@@ -16,6 +17,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   dialogs: dialogsReducer,
   profile: profileReducer,
+  home: homeReducer,
 });
 
 const persistedReducers = persistReducer(persistConfig, rootReducer);
