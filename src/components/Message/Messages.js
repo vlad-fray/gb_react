@@ -3,7 +3,7 @@ import Message from './Message';
 import SendMessageForm from './SendMessageForm';
 import { useParams } from 'react-router';
 
-const Messages = ({ sendMessage, dialogsList }) => {
+const Messages = ({ sendMessage, removeDialog, dialogsList }) => {
   const params = useParams();
   const paramId = +params.id;
 
@@ -19,7 +19,10 @@ const Messages = ({ sendMessage, dialogsList }) => {
     <section className={classes.messages}>
       {currentDialog && (
         <>
-          <h2>Messages</h2>
+          <div className={classes.heading}>
+            <h2>Messages</h2>
+            <button onClick={() => removeDialog(paramId)}>Remove Dialog</button>
+          </div>
 
           {currentDialog.messageList.map((mes) => {
             return (

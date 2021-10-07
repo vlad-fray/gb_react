@@ -4,7 +4,11 @@ import classes from './DialogsPage.module.css';
 import SideMenu from '../components/SideMenu/SideMenu';
 import Messages from '../components/Message/Messages';
 import AddDialog from '../components/Message/AddDialog';
-import { ADD_DIALOG, SEND_MESSAGE } from '../store/dialogsReducer';
+import {
+  ADD_DIALOG,
+  SEND_MESSAGE,
+  REMOVE_DIALOG,
+} from '../store/dialogsReducer';
 
 const DialogsPage = () => {
   const dispatch = useDispatch();
@@ -18,6 +22,10 @@ const DialogsPage = () => {
     dispatch({ type: ADD_DIALOG, payload: { chatName } });
   };
 
+  const removeDialog = (id) => {
+    dispatch({ type: REMOVE_DIALOG, payload: { id } });
+  };
+
   return (
     <div className={classes.dialogs}>
       <SideMenu dialogsList={dialogsList} />
@@ -26,7 +34,11 @@ const DialogsPage = () => {
           <AddDialog addDialog={addDialog} />
         </Route>
         <Route path='/dialogs/:id'>
-          <Messages dialogsList={dialogsList} sendMessage={sendMessage} />
+          <Messages
+            dialogsList={dialogsList}
+            sendMessage={sendMessage}
+            removeDialog={removeDialog}
+          />
         </Route>
       </Switch>
     </div>
