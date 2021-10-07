@@ -1,0 +1,54 @@
+.profile {
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 0 var(--secondary);
+}
+
+.profile img {
+  width: 100%;
+  height: 100%;
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.user-info {
+  padding: 0 10px;
+}
+
+.user-info h3 {
+  margin-bottom: 10px;
+}
+
+.user-info button {
+  color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary);
+  border-radius: 5px;
+  background-color: white;
+  border: none;
+  padding: 2px 5px;
+  margin: 0 5px;
+}
+
+.user-info button.submit {
+  margin: 10px auto 5px;
+}
+
+.user-info button:hover {
+  box-shadow: none;
+}
+
+.profile form {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile input {
+  margin: 5px 0;
+  padding: 5px;
+  border: 1px solid var(--primary);
+  background-color: white;
+  border-radius: 5px;
+  width: 400px;
+}
