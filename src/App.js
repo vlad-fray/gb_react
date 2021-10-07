@@ -1,60 +1,103 @@
-import { createTheme, ThemeProvider } from '@material-ui/core';
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
+import { Redirect, Route, Switch } from 'react-router';
 import './base.css';
 import Header from './components/Header/Header';
-import Main from './components/Main/Main';
+import AddDialog from './components/Message/AddDialog';
+import Messages from './components/Message/Messages';
+import Profile from './components/Profile/Profile';
 import SideMenu from './components/SideMenu/SideMenu';
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#333996',
-      light: '#3c44b126',
-    },
-    secondary: {
-      main: '#f83245',
-      light: '#f8324526',
-    },
-    background: {
-      default: '#f4f5fd',
-    },
-  },
-});
-
 function App() {
-  const [messageList, setMessageList] = useState([]);
-  const [chatList] = useState([
-    { title: 'robot', id: 1 },
-    { title: 'robot-2', id: 2 },
+  const [dialogsList, setDialogsList] = useState([
+    {
+      dialogId: 1,
+      title: 'robot',
+      messageList: [],
+      isActive: false,
+    },
+    {
+      dialogId: 2,
+      title: 'robot-2',
+      messageList: [],
+      isActive: false,
+    },
   ]);
 
-  const sendMessage = useCallback((text, author) => {
-    setMessageList((prev) => [
-      ...prev,
-      { text, author, id: Math.floor(Math.random() * 10000) },
-    ]);
-  }, []);
+  const sendMessage = ({ dialogId, text, author }) => {
+    setDialogsList((prev) => {
+      const currentId = dialogsList.findIndex(
+        (dia) => dia.dialogId === dialogId
+      );
+      const newDialogsList = [...prev];
 
-  useEffect(() => {
-    const id = messageList.length - 1;
-    if (id >= 0 && messageList[id].author !== 'robot') {
+      newDialogsList[currentId].messageList = [
+        ...newDialogsList[currentId].messageList,
+        { text, author, id: Math.floor(Math.random() * 10000) },
+      ];
+
+      // currentId - id элемента массива
+      // dialogId - id самого диалога
+      // сей чудо-костыль нужен, чтобы получить ответное сообщение
+      getAnswer(currentId, dialogId);
+
+      return newDialogsList;
+    });
+  };
+
+  const getAnswer = (currentId, dialogId) => {
+    const dialog = dialogsList[currentId];
+    const messageList = dialog.messageList;
+    const lastMes = messageList.length - 1;
+
+    if (messageList[lastMes].author !== dialog.title) {
       setTimeout(() => {
-        sendMessage(
-          'Your message is good, but mine is better',
-          'robot'
-        );
+        sendMessage({
+          text: 'Hello, leather bag',
+          author: dialog.title,
+          dialogId,
+        });
       }, 1500);
     }
-  }, [messageList, sendMessage]);
+  };
+
+  const addDialog = (chatName) => {
+    setDialogsList((prev) => [
+      ...prev,
+      {
+        dialogId: Math.floor(Math.random() * 1000),
+        title: chatName,
+        messageList: [],
+        isActive: false,
+      },
+    ]);
+  };
 
   return (
-    <ThemeProvider theme={theme}>
-      <div className='layout'>
-        <Header />
-        <SideMenu chats={chatList} />
-        <Main messageList={messageList} sendMessage={sendMessage} />
-      </div>
-    </ThemeProvider>
+    <div className='layout'>
+      <Header />
+      <Switch>
+        <Route exact path='/'>
+          <h1>Home page</h1>
+        </Route>
+        <Route path='/profile' exact>
+          <Profile />
+        </Route>
+        <Route path='/messages'>
+          <SideMenu dialogsList={dialogsList} />
+          <Switch>
+            <Route exact path='/messages/add-dialog'>
+              <AddDialog addDialog={addDialog} />
+            </Route>
+            <Route path='/messages/:id'>
+              <Messages dialogsList={dialogsList} sendMessage={sendMessage} />
+            </Route>
+          </Switch>
+        </Route>
+        <Route path='*'>
+          <Redirect to='/' />
+        </Route>
+      </Switch>
+    </div>
   );
 }
 

@@ -1,25 +1,26 @@
 import classes from './SideMenu.module.css';
 import AddBoxIcon from '@material-ui/icons/AddBox';
-const SideMenu = ({ chats }) => {
+import { NavLink } from 'react-router-dom';
+const SideMenu = ({ dialogsList }) => {
   return (
     <aside className={`${classes['side-menu']}`}>
-      {chats?.map((chat) => (
-        <button
-          onClick={() => console.log('hey')}
-          key={chat.id}
-          className={chat.id === 1 ? classes['active-chat'] : ''}
-          disabled={chat.id === 1}
+      {dialogsList?.map((dialog) => (
+        <NavLink
+          key={dialog.dialogId}
+          activeClassName={classes['active-chat']}
+          to={`/messages/${dialog.dialogId}`}
         >
-          {chat.title}
-        </button>
+          {dialog.title}
+        </NavLink>
       ))}
-      <button
+      <NavLink
         className={classes.add}
-        onClick={() => console.log('addHey')}
+        to='/messages/add-dialog'
+        activeClassName={classes['active-chat']}
       >
         <AddBoxIcon />
         Add a new chat
-      </button>
+      </NavLink>
     </aside>
   );
 };
