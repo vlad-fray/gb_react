@@ -12,5 +12,3 @@ function App() {
 }
 
 export default App;
-
-//https://colorscheme.ru/#3A31Tw0w0w0w0

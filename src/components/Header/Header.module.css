@@ -25,10 +25,13 @@
 
 .header a {
   color: white;
+  padding: 5px;
+  border-radius: 5px;
 }
 
-.active {
-  text-decoration: underline;
+.header a.active {
+  background-color: white;
+  color: var(--secondary);
 }
 
 @media (max-width: 900px) {

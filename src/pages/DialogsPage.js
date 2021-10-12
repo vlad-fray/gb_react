@@ -4,18 +4,18 @@ import classes from './DialogsPage.module.css';
 import SideMenu from '../components/SideMenu/SideMenu';
 import Messages from '../components/Message/Messages';
 import AddDialog from '../components/Message/AddDialog';
-import { ADD_DIALOG, SEND_MESSAGE } from '../store/dialogsReducer';
+import { removeDialogThunk, addDialogThunk } from './../actions/dialogsActions';
 
 const DialogsPage = () => {
   const dispatch = useDispatch();
   const dialogsList = useSelector((state) => state.dialogs);
 
-  const sendMessage = ({ dialogId, text, author }) => {
-    dispatch({ type: SEND_MESSAGE, payload: { dialogId, text, author } });
+  const addDialog = (chatName) => {
+    dispatch(addDialogThunk(chatName));
   };
 
-  const addDialog = (chatName) => {
-    dispatch({ type: ADD_DIALOG, payload: { chatName } });
+  const removeDialog = (id) => {
+    dispatch(removeDialogThunk(id));
   };
 
   return (
@@ -26,7 +26,7 @@ const DialogsPage = () => {
           <AddDialog addDialog={addDialog} />
         </Route>
         <Route path='/dialogs/:id'>
-          <Messages dialogsList={dialogsList} sendMessage={sendMessage} />
+          <Messages dialogsList={dialogsList} removeDialog={removeDialog} />
         </Route>
       </Switch>
     </div>

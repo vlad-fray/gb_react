@@ -18,11 +18,36 @@
   gap: 10px;
 }
 
-.input {
+.form input {
+  color: var(--secondary-dark);
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid var(--secondary);
+  padding: 15px;
   width: 100%;
-  margin-right: 10px;
+  outline: none;
+}
+
+.form input:focus-visible {
+  border: 2px solid var(--secondary-dark);
 }
 
 .form button {
-  margin-left: auto;
+  width: 100px;
+  background-color: var(--secondary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  padding: 10px;
+}
+
+.form button:hover {
+  background-color: var(--secondary-dark);
+}
+
+.form button:active {
+  color: var(--secondary-dark);
+  background-color: white;
+  box-shadow: 0 0 0 1px var(--secondary-dark);
 }
