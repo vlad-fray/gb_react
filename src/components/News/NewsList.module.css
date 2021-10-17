@@ -1,0 +1,19 @@
+.news-item {
+  padding: 20px 0;
+}
+
+.news-item:not(:last-of-type) {
+  border-bottom: 1px solid var(--secondary);
+}
+
+.news-item > * {
+  margin: 10px 0;
+}
+
+.news-item span {
+  color: white;
+  background-color: var(--secondary);
+  border-radius: 5px;
+  padding: 2px;
+  margin-right: 2px;
+}

@@ -1,7 +1,7 @@
 import classes from './Profile.module.css';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CHANGE_PROFILE_INFO } from '../../store/profileReducer';
+import { changeProfileInfoThunk } from './../../actions/profileActions';
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -17,14 +17,13 @@ const Profile = () => {
 
   const handleChangeProfileData = (e) => {
     e.preventDefault();
-    dispatch({
-      type: CHANGE_PROFILE_INFO,
-      payload: {
+    dispatch(
+      changeProfileInfoThunk({
         username: inputName,
         age: inputAge,
         status: inputStatus,
-      },
-    });
+      })
+    );
     setIsEditing(false);
   };
 

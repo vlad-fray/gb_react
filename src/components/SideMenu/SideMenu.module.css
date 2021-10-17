@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   flex: 0 0 200px;
-  /* background-color: var(--secondary); */
   color: white;
   border-radius: 5px 5px;
   box-shadow: 0 0 5px 0 var(--secondary);
@@ -14,20 +13,15 @@
   padding: 10px;
   background-color: white;
   color: var(--secondary-dark);
-  border-radius: 2px;
+  border-radius: 5px;
   border: none;
-  box-shadow: 0 0 5px 0 var(--secondary-dark);
+  box-shadow: 0 0 0 1px var(--secondary-dark);
   text-align: center;
 }
 
-.side-menu a:hover {
-  box-shadow: none;
-}
-
-.side-menu .add {
-  display: flex;
-  align-items: center;
-  gap: 5px;
+.side-menu a:not(.active-chat):hover {
+  background-color: var(--secondary-dark);
+  color: white;
 }
 
 .side-menu .active-chat {
@@ -35,4 +29,10 @@
   color: white;
   box-shadow: none;
   cursor: default;
+}
+
+.side-menu .add {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }

@@ -1,8 +1,10 @@
 :root {
-  --primary: rgba(0, 0, 0, 0.54);
+  --primary: rgba(0, 0, 0, 0.6);
   --secondary: #689cd2;
   --secondary-dark: #04376c;
+  --emphasize: #ff5600;
 }
+/* https://colorscheme.ru/#3A31Tw0w0w0w0 */
 
 * {
   padding: 0;
